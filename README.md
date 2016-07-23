@@ -31,19 +31,19 @@ With one big added bonus that the original package didn't have: tests.
 ## Upgrade Guide
 
 <a name="installation"></a>
-## Installation
+## Instalacion
 
-### Quick
+### Rapida
 
-To install through composer, simply run the following command:
+Para instalar a tráves de composer, solo debes ejecutar el siguiente comando
 
 ``` bash
 composer require nwidart/laravel-modules
 ```
 
-#### Add Service Provider
+#### Agregar Service Provider
 
-Next add the following service provider in `config/app.php`.
+Agrega el siguiente provider dentro del archivo `config/app.php`.
 
 ```php
 'providers' => [
@@ -51,7 +51,7 @@ Next add the following service provider in `config/app.php`.
 ],
 ```
 
-Next, add the following aliases to `aliases` array in the same file.
+Luego, agrega el siguiente alias dentro del array 'aliases` del mismo archivo.
 
 ```php
 'aliases' => [
@@ -59,7 +59,7 @@ Next, add the following aliases to `aliases` array in the same file.
 ],
 ```
 
-Next publish the package's configuration file by running :
+Por ultimo, debes publicar el archivo de configuracion ejecutando el siguiente comando.
 
 ```
 php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
@@ -67,7 +67,7 @@ php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProv
 
 #### Autoloading
 
-By default controllers, entities or repositories not loaded automatically. You can autoload all that stuff using `psr-4`. For example :
+Por defecto los controladores, entidades o repositorios no son cargados automaticamente. Puedes cargarlos usando la convencion `psr-4`. Por ejemplo:
 
 ```json
 {
@@ -81,48 +81,48 @@ By default controllers, entities or repositories not loaded automatically. You c
 ```
 
 <a name="configuration"></a>
-## Configuration
+## Configuración
 
-- `modules` - Used for save the generated modules.
-- `assets` - Used for save the modules's assets from each modules.
-- `migration` - Used for save the modules's migrations if you publish the modules's migrations.
-- `generator` - Used for generate modules folders.
-- `scan` - Used for allow to scan other folders.
-- `enabled` - If `true`, the package will scan other paths. By default the value is `false`
-- `paths` - The list of path which can scanned automatically by the package.
+- `modules` - Se utiliza para guardar los módulos generados.
+- `assets` - Se utiliza para guardar los assets de cada uno de los módulos.
+- `migration` - Se utiliza para guardar las migraciones de los módulos si publica las migraciones.
+- `generator` - Se utiliza para generar las carpetas de los módulos.
+- `scan` - Se utiliza para permitir escanear otras carpetas.
+- `enabled` - Si esta en `true`, el paquete escaneara otras carpetas. Por defecto este valor esta en `false`
+- `paths` - La lista de los path que puede escanear automáticamente el paquete. composer
 - `composer`
 - `vendor` - Composer vendor name.
 - `author.name` - Composer author name.
 - `author.email` - Composer author email.
 - `cache`
-- `enabled` - If `true`, the scanned modules (all modules) will cached automatically. By default the value is `false`
-- `key` - The name of cache.
-- `lifetime` - Lifetime of cache.
+- `enabled` - Si es `true`, the scanned modules (todos los modulos) seran cacheados automaticamente. Por defecto este valor esta enabled `false`
+- `key` - El nombre del cache.
+- `lifetime` - Tiempod expiracion del cache.
 
 <a name="creating-a-module"></a>
-## Creating A Module
+## Creando un Módulo
 
-To create a new module you can simply run :
+Para crear un nuevo módulo simplemente ejecuta:
 
 ```
 php artisan module:make <module-name>
 ```
 
-- `<module-name>` - Required. The name of module will be created.
+- `<module-name>` - Requerido. El nombre del paquete creado.
 
-**Create a new module**
+**Creando un nuevo Módulo**
 
 ```
 php artisan module:make Blog
 ```
 
-**Create multiple modules**
+**Creando Multiples Módulos**
 
 ```
 php artisan module:make Blog User Auth
 ```
 
-By default if you create a new module, that will add some resources like controller, seed class or provider automatically. If you don't want these, you can add `--plain` flag, to generate a plain module.
+Por defecto al crear un nuevo módulo, este agregare unos recursos por defecto como lo son un controlador, un seed y un provider automaticamente. Si no lo deseas puedes agregar en el comando un flag `--plain` para generar un modulo plano.
 
 ```shell
 php artisan module:make Blog --plain
@@ -133,10 +133,10 @@ php artisan module:make Blog -p
 <a name="naming-convension"></a>
 **Naming Convension**
 
-Because we are autoloading the modules using `psr-4`, we strongly recommend using `StudlyCase` convension.
+Ya que el autoloading de los modulos se hacen con `psr-4`, se debe usar la convencion de nombres `StudlyCase`.
 
 <a name="folder-structure"></a>
-**Folder Structure**
+**Estructura de Carpetas**
 
 ```
 laravel-app/
@@ -170,27 +170,27 @@ modules/
 ```
 
 <a name="artisan-commands"></a>
-## Artisan Commands
+## Comandos de Artisan
 
-Create new module.
+Crear un nuevo Módulo.
 
 ```
 php artisan module:make blog
 ```
 
-Use the specified module.
+Usar un Módulo espesifico.
 
 ```php
 php artisan module:use blog
 ```
 
-Show all modules in command line.
+Mostras todos los Módulos en la consola.
 
 ```
 php artisan module:list
 ```
 
-Create new command for the specified module.
+Crear un nuevo comando por un módulo en espesifico.
 
 ```
 php artisan module:make-command CustomCommand blog
@@ -200,7 +200,7 @@ php artisan module:make-command CustomCommand --command=custom:command blog
 php artisan module:make-command CustomCommand --namespace=Modules\Blog\Commands blog
 ```
 
-Create new migration for the specified module.
+Crear un archivo de migracion para un Módulo.
 
 ```
 php artisan module:make-migration create_users_table blog
@@ -214,7 +214,7 @@ php artisan module:make-migration remove_email_from_users_table --fields="email:
 php artisan module:make-migration drop_users_table blog
 ```
 
-Rollback, Reset and Refresh The Modules Migrations.
+Migraciones de los Móudlos - Rollback, Reset y Refresh 
 
 ```
 php artisan module:migrate-rollback
@@ -224,7 +224,7 @@ php artisan module:migrate-reset
 php artisan module:migrate-refresh
 ```
 
-Rollback, Reset and Refresh The Migrations for the specified module.
+Migracion de un solo Módulo - Rollback, Reset y Refresh .
 
 ```
 php artisan module:migrate-rollback blog
@@ -234,55 +234,55 @@ php artisan module:migrate-reset blog
 php artisan module:migrate-refresh blog
 ```
 
-Create new seed for the specified module.
+Crear un Seeder para un solo Módulo.
 
 ```
 php artisan module:make-seed users blog
 ```
 
-Migrate from the specified module.
+Migracion de un solo Módulo.
 
 ```
 php artisan module:migrate blog
 ```
 
-Migrate from all modules.
+Migración de todos los Módulos.
 
 ```
 php artisan module:migrate
 ```
 
-Seed from the specified module.
+Seeder de un solo Módulo.
 
 ```
 php artisan module:seed blog
 ```
 
-Seed from all modules.
+Seed de todos los Módulos.
 
 ```
 php artisan module:seed
 ```
 
-Create new controller for the specified module.
+Creacion de un Controlador para un Módulo espesifico.
 
 ```
 php artisan module:make-controller SiteController blog
 ```
 
-Publish assets from the specified module to public directory.
+Publicar assets de un módulo en el directorio public.
 
 ```
 php artisan module:publish blog
 ```
 
-Publish assets from all modules to public directory.
+Publicar assets de todos los módulos en el directorio public.
 
 ```
 php artisan module:publish
 ```
 
-Create new model for the specified module.
+Crear un Model dentro de un Módulo
 
 ```
 php artisan module:make-model User blog
@@ -290,69 +290,69 @@ php artisan module:make-model User blog
 php artisan module:make-model User blog --fillable="username,email,password"
 ```
 
-Create new service provider for the specified module.
+Crear un Service Provider dentro de un Módulo
 
 ```
 php artisan module:make-provider MyServiceProvider blog
 ```
 
-Publish migration for the specified module or for all modules.
+Publicar migraciones de un todos los módulos o de uno solo.
 
-This helpful when you want to rollback the migrations. You can also run `php artisan migrate` instead of `php artisan module:migrate` command for migrate the migrations.
+Es muy util cuando se requiere hacer un rollback de todas las migraciones. Asi se puede ejecutar `php artisan migrate` en vez de `php artisan module:migrate` para migrar, valga la redundancia, todas las migraciones.
 
-For the specified module.
+Para un módulo espesifico.
 
 ```
 php artisan module:publish-migration blog
 ```
 
-For all modules.
+Para todas las migraciones.
 
 ```
 php artisan module:publish-migration
 ```
 
-Publish Module configuration files
+Publicar archivos de configuracion de un Módulo.
 
 ```
 php artisan module:publish-config <module-name>
 ```
 
-- (optional) `module-name`: The name of the module to publish configuration. Leaving blank will publish all modules.
-- (optional) `--force`: To force the publishing, overwriting already published files
+- (opcional) `module-name`: El nombre del módulo. Si lo deja en blanco va a publicar los archivos de todos los módulos.
+- (opcional) `--force`: Para forzar la publicación, y sobrescribir los archivos ya publicados.
 
-Enable the specified module.
+Habilitar un módulo.
 
 
 ```
 php artisan module:enable blog
 ```
 
-Disable the specified module.
+Desactivar  un módulo.
 
 ```
 php artisan module:disable blog
 ```
 
-Generate new middleware class.
+Generar una clase middleware
 
 ```
 php artisan module:make-middleware Auth
 ```
 
-Update dependencies for the specified module.
+Actualizar dependencias de un módulo.
 
 ```
 php artisan module:update ModuleName
 ```
 
-Update dependencies for all modules.
+Actualizar dependencias de todos los módulos.
 
 ```
 php artisan module:update
 ```
 
-Show the list of modules.
+Muestra en consola todos los módulos.
 
 ```
 php artisan module:list
@@ -361,19 +361,19 @@ php artisan module:list
 <a name="facades"></a>
 ## Facades
 
-Get all modules.
+Obtener todos los módulos.
 
 ```php
 Module::all();
 ```
 
-Get all cached modules.
+Obtener todos los módulos en caché..
 
 ```php
 Module::getCached()
 ```
 
-Get ordered modules. The modules will be ordered by the `priority` key in `module.json` file.
+Obtener módulos ordenados. Los módulos serán ordenados por la key `priority` en el archivo `module.json`.
 
 ```php
 Module::getOrdered();
@@ -385,7 +385,7 @@ Get scanned modules.
 Module::scan();
 ```
 
-Find a specific module.
+Buscar un Módulo.
 
 ```php
 Module::find('name');
@@ -393,61 +393,61 @@ Module::find('name');
 Module::get('name');
 ```
 
-Find a module, if there is one, return the `Module` instance, otherwise throw `Nwidart\Modules\Exeptions\ModuleNotFoundException`.
+Busca un Módulo, si hay uni, retorna una instancia de `Module`, de lo contrario arroja un  `Nwidart\Modules\Exeptions\ModuleNotFoundException`.
 
 ```php
 Module::findOrFail('module-name');
 ```
 
-Get scanned paths.
+Obtener los paths escaneados
 
 ```php
 Module::getScanPaths();
 ```
 
-Get all modules as a collection instance.
+Obtener todos los módulos como una coleccion.
 
 ```php
 Module::toCollection();
 ```
 
-Get modules by the status. 1 for active and 0 for inactive.
+Obtener los Módulos por status, 1 para activos y 0 para inactivos.
 
 ```php
 Module::getByStatus(1);
 ```
 
-Check the specified module. If it exists, will return `true`, otherwise `false`.
+Verifica un Módulo. Si existe  retorna `true`, de lo contrario manda un `false`.
 
 ```php
 Module::has('blog');
 ```
 
-Get all enabled modules.
+Obtener Módulos Activados
 
 ```php
 Module::enabled();
 ```
 
-Get all disabled modules.
+Obtener Módulos Desactivados.
 
 ```php
 Module::disabled();
 ```
 
-Get count of all modules.
+Obtener la cantidad de Módulos
 
 ```php
 Module::count();
 ```
 
-Get module path.
+Obtener module path.
 
 ```php
 Module::getPath();
 ```
 
-Register the modules.
+Registrar los Módulos
 
 ```php
 Module::register();
@@ -530,55 +530,55 @@ Module::update('hello');
 <a name="entity"></a>
 ## Module Entity
 
-Get an entity from a specific module.
+Obtner la entidad de un módulo.
 
 ```php
 $module = Module::find('blog');
 ```
 
-Get module name.
+Obtener nombre
 
 ```
 $module->getName();
 ```
 
-Get module name in lowercase.
+Obtener nombre en lowercase.
 
 ```
 $module->getLowerName();
 ```
 
-Get module name in studlycase.
+Obtener nombre en  studlycase.
 
 ```
 $module->getStudlyName();
 ```
 
-Get module path.
+Obtener path.
 
 ```
 $module->getPath();
 ```
 
-Get extra path.
+Obtener extra path.
 
 ```
 $module->getExtraPath('Assets');
 ```
 
-Disable the specified module.
+Activar 
 
 ```
 $module->enable();
 ```
 
-Enable the specified module.
+Desactivar
 
 ```
 $module->disable();
 ```
 
-Delete the specified module.
+Eliminar
 
 ```
 $module->delete();
@@ -587,6 +587,7 @@ $module->delete();
 <a name="namespaces"></a>
 ## Custom Namespaces
 
+Cuando se crea un nuevo módulo 
 When you create a new module it also registers new custom namespace for `Lang`, `View` and `Config`. For example, if you create a new module named blog, it will also register new namespace/hint blog for that module. Then, you can use that namespace for calling `Lang`, `View` or `Config`. Following are some examples of its usage:
 
 Calling Lang:
@@ -616,7 +617,7 @@ Have you created a laravel modules? Yes, I've. Then, I want to publish my module
 <a name="auto-scan-vendor-directory"></a>
 ### Auto Scan Vendor Directory
 
-By default the `vendor` directory is not scanned automatically, you need to update the configuration file to allow that. Set `scan.enabled` value to `true`. For example :
+Por defecto el directorio `vendor` no es escaneado automaticamente, se necesita actualizar el archivo de configuracion para permitarlo. Cambia el valor de `scan.enabled` a `true`. Por ejemplo:
 
 ```php
 // file config/modules.php
@@ -629,8 +630,7 @@ return [
   //...
 ]
 ```
-
-You can verify the module has been installed using `module:list` command:
+Con esto puedes verificar los módulos que has instalado usando el comando `module:list`:
 
 ```
 php artisan module:list
